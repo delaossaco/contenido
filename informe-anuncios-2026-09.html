@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calificación de anuncios · Plan Inmobiliario · Meta Ads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#001E29;--lima:#C8FF00;--fucsia:#EA4099;--blanco:#FFFFFF;--negro:#000000}
+*{box-sizing:border-box}
+body{margin:0;background:var(--blanco);color:var(--negro);font-family:'Open Sans',system-ui,sans-serif;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;margin:0}
+a{color:inherit}
+.wrap{max-width:1440px;margin:0 auto;padding:0 48px}
+header.portada{background:var(--azul);color:var(--blanco);padding:88px 0 72px}
+header.portada .marca{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--lima);margin-bottom:28px}
+header.portada h1{font-size:40px;line-height:1.15;max-width:20ch}
+header.portada .sub{margin-top:20px;font-size:15px;color:rgba(255,255,255,.78);max-width:70ch}
+header.portada .meta{margin-top:36px;display:flex;flex-wrap:wrap;gap:36px;font-size:13px;color:rgba(255,255,255,.78)}
+header.portada .meta b{display:block;font-weight:600;color:var(--blanco);font-size:20px;font-family:'Playfair Display',Georgia,serif}
+nav{position:sticky;top:0;z-index:20;background:var(--blanco);border-bottom:1px solid rgba(0,30,41,.14)}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0 48px;max-width:1440px;margin:0 auto;flex-wrap:wrap}
+nav a{display:block;padding:14px 16px;text-decoration:none;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:rgba(0,30,41,.6);border-bottom:3px solid transparent}
+nav a.on{color:var(--azul);border-bottom-color:var(--lima)}
+section{padding:64px 0;border-top:1px solid rgba(0,30,41,.1)}
+section:first-of-type{border-top:0}
+h2{font-size:32px;margin-bottom:8px}
+h2 .ac{background:var(--lima);color:var(--negro);padding:0 8px}
+.bajada{font-size:14px;color:rgba(0,30,41,.7);max-width:78ch;margin-bottom:36px}
+.hall{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:28px}
+.hall .item{border-top:3px solid var(--azul);padding-top:14px}
+.hall h3{font-size:19px;line-height:1.25;margin-bottom:8px}
+.hall p{margin:0;font-size:13.5px;color:rgba(0,30,41,.85)}
+h3.tabla-t{font-size:22px;margin:40px 0 6px}
+.leyenda{font-size:12px;color:rgba(0,30,41,.62);margin:14px 0 0;max-width:100ch}
+.leyenda>span{display:block;margin-bottom:3px}
+.tabla-wrap{overflow-x:auto;margin-top:16px;border:1px solid rgba(0,30,41,.14)}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th{background:var(--azul);color:var(--blanco);text-align:left;padding:10px 10px;font-weight:600;font-size:11.5px;line-height:1.3;vertical-align:bottom}
+td{padding:8px 10px;border-top:1px solid rgba(0,30,41,.1);vertical-align:middle;white-space:nowrap}
+tbody tr:nth-child(even){background:rgba(0,30,41,.03)}
+.num{text-align:right}
+td.vac{color:rgba(0,30,41,.28)}
+td.fuerte{font-weight:700;font-size:14px}
+td.dec{white-space:normal;min-width:150px}
+.kw{font-weight:600}
+.kw.dual{color:var(--fucsia)}
+.kw.pron{font-style:italic;font-weight:400;opacity:.72}
+td.num.pron{font-style:italic;opacity:.62}
+.acc{font-weight:400;font-size:11px}
+.chip{display:inline-block;padding:2px 9px;border-radius:11px;font-size:11px;font-weight:600;white-space:nowrap}
+.chip.exc{background:var(--lima);color:var(--negro)}
+.chip.bue{border:2px solid var(--azul);color:var(--azul);padding:0 7px}
+.chip.pro{border:1px solid rgba(0,30,41,.3);color:rgba(0,30,41,.7)}
+.chip.mal{background:rgba(0,30,41,.55);color:var(--blanco)}
+.chip.per{background:var(--azul);color:var(--blanco)}
+.proyecto{margin-bottom:40px}
+.proyecto h3{font-size:26px;margin-bottom:14px}
+.cajas{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.caja{border:1px solid rgba(0,30,41,.18);display:flex;flex-direction:column}
+.caja-h{padding:7px 12px;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.caja-h.exc{background:var(--lima);color:var(--negro)}
+.caja-h.bue{background:var(--blanco);color:var(--azul);border-bottom:2px solid var(--azul)}
+.caja-h.pro{background:var(--blanco);color:rgba(0,30,41,.7);border-bottom:1px solid rgba(0,30,41,.3)}
+.caja-h.mal{background:rgba(0,30,41,.55);color:var(--blanco)}
+.caja-h.per{background:var(--azul);color:var(--blanco)}
+.caja ul{list-style:none;margin:0;padding:12px;font-size:12.5px}
+.caja li{padding:2px 0;line-height:1.35}
+.caja li.vacia{color:rgba(0,30,41,.28)}
+.dec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:26px}
+.dec-item{border-left:3px solid var(--lima);padding-left:16px}
+.dec-item h3{font-size:19px;margin-bottom:6px}
+.dec-item p{margin:0;font-size:13.5px;color:rgba(0,30,41,.85)}
+footer{background:var(--azul);color:rgba(255,255,255,.75);padding:36px 0;font-size:12px;margin-top:24px}
+footer b{color:var(--lima);font-weight:600}
+@media(max-width:1100px){.cajas{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){
+ .wrap{padding:0 22px}nav ul{padding:0 12px}
+ header.portada{padding:56px 0 44px}header.portada h1{font-size:30px}
+ h2{font-size:26px}.cajas{grid-template-columns:1fr}section{padding:44px 0}
+}
+
+.rank table{font-size:13px}
+.rank td.mez{white-space:normal;min-width:210px;font-size:11.5px;color:rgba(0,30,41,.7)}
+.rank h3{font-size:22px;margin:36px 0 6px}
+.rank td.g{font-weight:600}
+</style></head><body>
+<header class="portada"><div class="wrap">
+<div class="marca">delaossa.co · marketing digital + IA aplicada</div>
+<h1>Calificación de anuncios en Meta Ads</h1>
+<div class="sub">Plan Inmobiliario. Cada pieza publicitaria del período medida contra el histórico de la propia cuenta, con la decisión que le corresponde.</div>
+<div class="meta">
+<div><b>1 ene — 10 sep 2026</b>período medido</div>
+<div><b>$46.289.060</b>inversión del período</div>
+<div><b>234</b>anuncios en plataforma</div>
+<div><b>68</b>piezas con entrega</div>
+<div><b>88</b>calificaciones</div>
+</div></div></header>
+<nav><ul>
+<li><a href="#hallazgos" class="on">Hallazgos</a></li>
+<li><a href="#calificacion">Calificación</a></li>
+<li><a href="#inventario">Inventario por proyecto</a></li>
+<li><a href="#ranking">Ranking por proyecto</a></li>
+<li><a href="#decisiones">Decisiones</a></li>
+</ul></nav>
+<section id="hallazgos"><div class="wrap">
+<h2>Lo que <span class="ac">encontramos</span></h2>
+<div class="bajada">Seis lecturas que salen de calificar las 68 piezas con entrega del período contra el comportamiento histórico de la cuenta.</div>
+<div class="hall"><div class="item"><h3>Contra qué se compara</h3><p>Cada pieza se califica contra el histórico de esta misma cuenta entre marzo de 2025 y agosto de 2026: 237 anuncios, todas las campañas. 100 es ese histórico exacto, 120 es un veinte por ciento mejor y 80 un veinte por ciento peor. No es un referente de industria. Es la cuenta compitiendo contra sí misma.</p></div><div class="item"><h3>La cuenta no se movió, las piezas sí</h3><p>En conjunto el período quedó donde estaba el histórico: 100 en visita con permanencia, 94 en WhatsApp, 99 en formulario en Meta. Ese empate esconde el rango real, que va de piezas al doble del histórico a piezas en un tercio de él. El promedio de la cuenta no es la noticia; la dispersión entre piezas sí.</p></div><div class="item"><h3>Lo único que superó al histórico ya está apagado</h3><p>Visita a la página quedó en 109 con evidencia sólida, y son todas piezas de 2025 que hoy no corren. Ese aprendizaje no se trasladó a las campañas vigentes.</p></div><div class="item"><h3>El formulario en la landing trae tráfico, no contactos</h3><p>De las 20 piezas que lo llevan, 13 no produjeron un solo formulario en el período, y 17 quedan a más de una banda de distancia entre su lectura de tráfico y su lectura de lead. Son buenas llevando gente y no la convierten.</p></div><div class="item"><h3>WhatsApp es el frente grande que perdió terreno</h3><p>Se llevó 16,9 millones de pesos, el 37 por ciento de la inversión del período, y su tasa de conversación por clic está en 88 del histórico. Es donde más plata hay y donde el rendimiento bajó.</p></div><div class="item"><h3>Un tercio del inventario no alcanzó a demostrar nada</h3><p>29 de las 88 calificaciones no llegaron a 100 clics en el período. Son las que aparecen en itálica. No es que rindan mal: es que no hubo volumen para saberlo.</p></div></div>
+</div></section>
+<section id="calificacion"><div class="wrap">
+<h2>La <span class="ac">calificación</span> pieza por pieza</h2>
+<div class="bajada">Una tabla por objetivo de compra. Cada fila es una pieza creativa con todas sus apariciones sumadas, ordenadas de mayor a menor rendimiento.</div>
+<h3 class="tabla-t">Tráfico · 27 piezas</h3>
+<div class="tabla-wrap"><table><thead><tr><th>Proyecto</th><th>Keyword</th><th>Formato</th><th class="num">Instancias</th><th class="num">Impresiones</th><th class="num">Visita con permanencia</th><th class="num">Visita a la pagina</th><th class="num">Formulario en landing</th><th class="num">Rendimiento</th><th>Banda</th><th>Decisión</th></tr></thead><tbody>
+<tr><td>Salva</td><td><span class="kw dual pron">Eligen</span></td><td>Carrusel</td><td class="num">2</td><td class="num">1.234</td><td class="num pron">125</td><td class="num vac">·</td><td class="num pron">112</td><td class="num fuerte">122</td><td><span class="chip exc">Excelente</span></td><td class="dec">Escalar</td></tr>
+<tr><td>Malva</td><td><span class="kw">Casa</span></td><td>Video</td><td class="num">4</td><td class="num">168.758</td><td class="num vac">·</td><td class="num">119</td><td class="num vac">·</td><td class="num fuerte">119</td><td><span class="chip exc">Excelente</span></td><td class="dec">Escalar (con reserva)</td></tr>
+<tr><td>Malva</td><td><span class="kw dual">Iluminacion</span></td><td>Video</td><td class="num">8</td><td class="num">78.163</td><td class="num">99</td><td class="num">117</td><td class="num pron">103</td><td class="num fuerte">113</td><td><span class="chip bue">Bueno</span></td><td class="dec">Mantener</td></tr>
+<tr><td>Salva</td><td><span class="kw dual">70</span></td><td>Video</td><td class="num">2</td><td class="num">122.832</td><td class="num">112</td><td class="num vac">·</td><td class="num">110</td><td class="num fuerte">112</td><td><span class="chip bue">Bueno</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw dual">Retoma</span></td><td>Video</td><td class="num">6</td><td class="num">38.678</td><td class="num">103</td><td class="num">119</td><td class="num pron">96</td><td class="num fuerte">110</td><td><span class="chip bue">Bueno</span></td><td class="dec">Mantener</td></tr>
+<tr><td>Malva</td><td><span class="kw dual">Lujo</span></td><td>Carrusel</td><td class="num">2</td><td class="num">44.374</td><td class="num">110</td><td class="num vac">·</td><td class="num pron">99</td><td class="num fuerte">109</td><td><span class="chip bue">Bueno</span></td><td class="dec">Ampliar audiencia</td></tr>
+<tr><td>Malva</td><td><span class="kw">Simple</span></td><td>Video</td><td class="num">1</td><td class="num">39.774</td><td class="num">109</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">109</td><td><span class="chip bue">Bueno</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual">Compra</span></td><td>Video</td><td class="num">6</td><td class="num">107.138</td><td class="num">97</td><td class="num">123</td><td class="num">102</td><td class="num fuerte">106</td><td><span class="chip bue">Bueno</span></td><td class="dec">Mantener (con reserva)</td></tr>
+<tr><td>Jaya</td><td><span class="kw dual">Quieres</span></td><td>Video</td><td class="num">8</td><td class="num">427.529</td><td class="num">95</td><td class="num">115</td><td class="num">100</td><td class="num fuerte">106</td><td><span class="chip bue">Bueno</span></td><td class="dec">Mantener (con reserva)</td></tr>
+<tr><td>Malva</td><td><span class="kw dual">Tranquilidad</span></td><td>Video</td><td class="num">6</td><td class="num">206.537</td><td class="num">100</td><td class="num">110</td><td class="num">102</td><td class="num fuerte">105</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw">Buscamos</span></td><td>Video</td><td class="num">4</td><td class="num">292.647</td><td class="num vac">·</td><td class="num">104</td><td class="num vac">·</td><td class="num fuerte">104</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw">Vivir</span></td><td>Video</td><td class="num">6</td><td class="num">131.513</td><td class="num vac">·</td><td class="num">104</td><td class="num vac">·</td><td class="num fuerte">104</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw dual">Calma</span></td><td>Video</td><td class="num">6</td><td class="num">311.938</td><td class="num">96</td><td class="num">107</td><td class="num">98</td><td class="num fuerte">103</td><td><span class="chip pro">Promedio</span></td><td class="dec">Mantener sin escalar (con reserva)</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual">Listos</span></td><td>Imagen</td><td class="num">2</td><td class="num">25.928</td><td class="num">100</td><td class="num vac">·</td><td class="num pron">105</td><td class="num fuerte">102</td><td><span class="chip pro">Promedio</span></td><td class="dec">Mantener sin escalar (con reserva)</td></tr>
+<tr><td>Malva</td><td><span class="kw dual">Pareja</span></td><td>Imagen</td><td class="num">4</td><td class="num">7.404</td><td class="num pron">101</td><td class="num vac">·</td><td class="num pron">102</td><td class="num fuerte">101</td><td><span class="chip pro">Promedio</span></td><td class="dec">Mantener sin escalar (con reserva)</td></tr>
+<tr><td>Salva</td><td><span class="kw dual">Propietarios</span></td><td>Carrusel</td><td class="num">2</td><td class="num">14.010</td><td class="num">101</td><td class="num vac">·</td><td class="num pron">105</td><td class="num fuerte">101</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw dual">Mantener</span></td><td>Carrusel</td><td class="num">4</td><td class="num">17.642</td><td class="num">110</td><td class="num vac">·</td><td class="num">98</td><td class="num fuerte">101</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual">Rionegro</span></td><td>Video</td><td class="num">4</td><td class="num">115.316</td><td class="num">96</td><td class="num vac">·</td><td class="num">106</td><td class="num fuerte">100</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Jaya</td><td><span class="kw dual">Nadie</span></td><td>Carrusel</td><td class="num">2</td><td class="num">4.049</td><td class="num">100</td><td class="num vac">·</td><td class="num pron">300</td><td class="num fuerte">100</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw dual">Ubicacion</span></td><td>Imagen</td><td class="num">4</td><td class="num">10.582</td><td class="num pron">96</td><td class="num vac">·</td><td class="num pron">102</td><td class="num fuerte">100</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw">Bonito</span></td><td>Video</td><td class="num">1</td><td class="num">38.580</td><td class="num">98</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">98</td><td><span class="chip pro">Promedio</span></td><td class="dec">Mantener sin escalar (con reserva)</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual">Habitacion</span></td><td>Imagen</td><td class="num">4</td><td class="num">13.044</td><td class="num pron">106</td><td class="num vac">·</td><td class="num pron">88</td><td class="num fuerte">98</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Jaya</td><td><span class="kw dual">Primer</span></td><td>Carrusel</td><td class="num">2</td><td class="num">142.376</td><td class="num">95</td><td class="num vac">·</td><td class="num pron">100</td><td class="num fuerte">95</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual pron">Estrenar</span></td><td>Carrusel</td><td class="num">2</td><td class="num">3.895</td><td class="num pron">112</td><td class="num vac">·</td><td class="num pron">92</td><td class="num fuerte">95</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Jaya</td><td><span class="kw">Momento</span></td><td>Carrusel</td><td class="num">1</td><td class="num">38.513</td><td class="num">92</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">92</td><td><span class="chip mal">Malo</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw">Decides</span></td><td>Carrusel</td><td class="num">1</td><td class="num">13.552</td><td class="num">92</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">92</td><td><span class="chip mal">Malo</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual">Precio</span></td><td>Imagen</td><td class="num">4</td><td class="num">10.412</td><td class="num">90</td><td class="num vac">·</td><td class="num pron">82</td><td class="num fuerte">89</td><td><span class="chip mal">Malo</span></td><td class="dec">Dejar correr</td></tr>
+</tbody></table></div>
+<div class="leyenda"><span>Rendimiento: 100 es el histórico de la cuenta. Cada columna de objetivo se compara contra el histórico de ese objetivo, y la de rendimiento las promedia según las impresiones de la pieza en cada uno.</span><span>Instancias: veces que la misma pieza corrió en un conjunto de anuncios distinto. Sus cifras están sumadas en una sola fila.</span><span><i>En itálica</i>: la pieza, o su cifra en ese objetivo, no alcanzó 100 clics en el período, así que esa lectura es un pronóstico y no una calificación en firme.</span><span><span class="kw dual">En fucsia</span>: la pieza lleva formulario en la landing y persigue tráfico y lead a la vez, así que se califica en las dos tablas y puede quedar en una banda distinta en cada objetivo.</span></div>
+<h3 class="tabla-t">Lead · 61 piezas</h3>
+<div class="tabla-wrap"><table><thead><tr><th>Proyecto</th><th>Keyword</th><th>Formato</th><th class="num">Instancias</th><th class="num">Impresiones</th><th class="num">Conversacion WhatsApp</th><th class="num">Formulario en Meta</th><th class="num">Formulario en landing</th><th class="num">Rendimiento</th><th>Banda</th><th>Decisión</th></tr></thead><tbody>
+<tr><td>Jaya</td><td><span class="kw dual pron">Nadie</span></td><td>Carrusel</td><td class="num">1</td><td class="num">2</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">300</td><td class="num fuerte">300</td><td><span class="chip exc">Excelente</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Jaya</td><td><span class="kw dual">Quieres</span></td><td>Video</td><td class="num">2</td><td class="num">33.021</td><td class="num vac">·</td><td class="num vac">·</td><td class="num">262</td><td class="num fuerte">262</td><td><span class="chip exc">Excelente</span></td><td class="dec">Ampliar audiencia</td></tr>
+<tr><td>Jaya</td><td><span class="kw dual pron">Primer</span></td><td>Carrusel</td><td class="num">1</td><td class="num">1.512</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">247</td><td class="num fuerte">247</td><td><span class="chip exc">Excelente</span></td><td class="dec">Refrescar gancho (con reserva)</td></tr>
+<tr><td>Sibaris</td><td><span class="kw">Nivel</span></td><td>Imagen</td><td class="num">1</td><td class="num">10.817</td><td class="num">131</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">131</td><td><span class="chip exc">Excelente</span></td><td class="dec">Ampliar audiencia (con reserva)</td></tr>
+<tr><td>Foresta</td><td><span class="kw pron">Atributos</span></td><td>Carrusel</td><td class="num">1</td><td class="num">223</td><td class="num pron">125</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">125</td><td><span class="chip exc">Excelente</span></td><td class="dec">Escalar (con reserva)</td></tr>
+<tr><td>Jaya</td><td><span class="kw">Aptos</span></td><td>Video</td><td class="num">4</td><td class="num">45.824</td><td class="num">125</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">125</td><td><span class="chip exc">Excelente</span></td><td class="dec">Escalar (con reserva)</td></tr>
+<tr><td>Ruta</td><td><span class="kw">Ziper</span></td><td>Video</td><td class="num">5</td><td class="num">113.120</td><td class="num">119</td><td class="num">127</td><td class="num vac">·</td><td class="num fuerte">124</td><td><span class="chip exc">Excelente</span></td><td class="dec">Ampliar audiencia</td></tr>
+<tr><td>Sibaris</td><td><span class="kw">Campestre</span></td><td>Carrusel</td><td class="num">1</td><td class="num">17.895</td><td class="num">120</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">120</td><td><span class="chip exc">Excelente</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Jaya</td><td><span class="kw">Construccion</span></td><td>Video</td><td class="num">4</td><td class="num">206.462</td><td class="num">116</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">116</td><td><span class="chip exc">Excelente</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw">Sector</span></td><td>Video</td><td class="num">5</td><td class="num">276.318</td><td class="num">121</td><td class="num">109</td><td class="num vac">·</td><td class="num fuerte">115</td><td><span class="chip exc">Excelente</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw">Medico</span></td><td>Imagen</td><td class="num">2</td><td class="num">7.670</td><td class="num pron">82</td><td class="num pron">124</td><td class="num vac">·</td><td class="num fuerte">114</td><td><span class="chip bue">Bueno</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Foresta</td><td><span class="kw pron">Privada</span></td><td>Imagen</td><td class="num">1</td><td class="num">226</td><td class="num pron">110</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">110</td><td><span class="chip bue">Bueno</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Jaya</td><td><span class="kw">Falso</span></td><td>Video</td><td class="num">1</td><td class="num">47.596</td><td class="num">110</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">110</td><td><span class="chip bue">Bueno</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Foresta</td><td><span class="kw">Disfrutar</span></td><td>Imagen</td><td class="num">1</td><td class="num">17.305</td><td class="num">107</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">107</td><td><span class="chip bue">Bueno</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw">Deseo</span></td><td>Video</td><td class="num">5</td><td class="num">31.962</td><td class="num pron">103</td><td class="num">107</td><td class="num vac">·</td><td class="num fuerte">106</td><td><span class="chip bue">Bueno</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw pron">Familia</span></td><td>Imagen</td><td class="num">2</td><td class="num">5.078</td><td class="num pron">60</td><td class="num pron">160</td><td class="num vac">·</td><td class="num fuerte">106</td><td><span class="chip bue">Bueno</span></td><td class="dec">Mantener (con reserva)</td></tr>
+<tr><td>Malva</td><td><span class="kw">Salir</span></td><td>Video</td><td class="num">2</td><td class="num">28.604</td><td class="num">116</td><td class="num">84</td><td class="num vac">·</td><td class="num fuerte">104</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw">Invertir</span></td><td>Video</td><td class="num">8</td><td class="num">66.362</td><td class="num">122</td><td class="num">86</td><td class="num vac">·</td><td class="num fuerte">104</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw">Llanogrande</span></td><td>Video</td><td class="num">5</td><td class="num">83.863</td><td class="num">113</td><td class="num">95</td><td class="num vac">·</td><td class="num fuerte">101</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw">Comodidades</span></td><td>Video</td><td class="num">5</td><td class="num">17.762</td><td class="num">108</td><td class="num">96</td><td class="num vac">·</td><td class="num fuerte">100</td><td><span class="chip pro">Promedio</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual pron">Estrenar</span></td><td>Carrusel</td><td class="num">1</td><td class="num">3.218</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">95</td><td class="num fuerte">95</td><td><span class="chip mal">Malo</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Sibaris</td><td><span class="kw">Niños</span></td><td>Imagen</td><td class="num">1</td><td class="num">7.339</td><td class="num">90</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">90</td><td><span class="chip mal">Malo</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw">Presupuesto</span></td><td>Imagen</td><td class="num">2</td><td class="num">12.998</td><td class="num">96</td><td class="num pron">61</td><td class="num vac">·</td><td class="num fuerte">89</td><td><span class="chip mal">Malo</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw">Recta</span></td><td>Video</td><td class="num">4</td><td class="num">41.967</td><td class="num">80</td><td class="num">101</td><td class="num vac">·</td><td class="num fuerte">86</td><td><span class="chip mal">Malo</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw">Versus</span></td><td>Carrusel</td><td class="num">2</td><td class="num">22.385</td><td class="num">93</td><td class="num pron">64</td><td class="num vac">·</td><td class="num fuerte">86</td><td><span class="chip mal">Malo</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw">Disponibles</span></td><td>Video</td><td class="num">2</td><td class="num">24.780</td><td class="num pron">57</td><td class="num">100</td><td class="num vac">·</td><td class="num fuerte">85</td><td><span class="chip mal">Malo</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw">Construccion</span></td><td>Video</td><td class="num">4</td><td class="num">107.655</td><td class="num">76</td><td class="num">90</td><td class="num vac">·</td><td class="num fuerte">82</td><td><span class="chip per">Perverso</span></td><td class="dec">Revisar destino (con reserva)</td></tr>
+<tr><td>Ruta</td><td><span class="kw pron">Inmediata</span></td><td>Carrusel</td><td class="num">2</td><td class="num">796</td><td class="num pron">96</td><td class="num pron">41</td><td class="num vac">·</td><td class="num fuerte">80</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw">Finde</span></td><td>Imagen</td><td class="num">2</td><td class="num">21.834</td><td class="num">82</td><td class="num pron">64</td><td class="num vac">·</td><td class="num fuerte">79</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw">Estamos</span></td><td>Video</td><td class="num">3</td><td class="num">15.465</td><td class="num pron">133</td><td class="num pron">61</td><td class="num vac">·</td><td class="num fuerte">78</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Jaya</td><td><span class="kw">Visita</span></td><td>Imagen</td><td class="num">1</td><td class="num">17.914</td><td class="num">77</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">77</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw pron">Trabajo</span></td><td>Carrusel</td><td class="num">2</td><td class="num">4.171</td><td class="num pron">67</td><td class="num pron">109</td><td class="num vac">·</td><td class="num fuerte">73</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw">Ritmo</span></td><td>Imagen</td><td class="num">2</td><td class="num">15.684</td><td class="num">74</td><td class="num pron">53</td><td class="num vac">·</td><td class="num fuerte">71</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw">Construye</span></td><td>Video</td><td class="num">2</td><td class="num">25.030</td><td class="num pron">87</td><td class="num">65</td><td class="num vac">·</td><td class="num fuerte">70</td><td><span class="chip per">Perverso</span></td><td class="dec">Apagar (con reserva)</td></tr>
+<tr><td>Jaya</td><td><span class="kw pron">Remoto</span></td><td>Video</td><td class="num">1</td><td class="num">5.532</td><td class="num pron">70</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">70</td><td><span class="chip per">Perverso</span></td><td class="dec">Revisar destino (con reserva)</td></tr>
+<tr><td>Ruta</td><td><span class="kw pron">Pareja</span></td><td>Imagen</td><td class="num">2</td><td class="num">4.622</td><td class="num pron">60</td><td class="num pron">93</td><td class="num vac">·</td><td class="num fuerte">68</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw dual">70</span></td><td>Video</td><td class="num">1</td><td class="num">17.011</td><td class="num vac">·</td><td class="num vac">·</td><td class="num">67</td><td class="num fuerte">67</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw dual">Tranquilidad</span></td><td>Video</td><td class="num">2</td><td class="num">19.189</td><td class="num vac">·</td><td class="num vac">·</td><td class="num">66</td><td class="num fuerte">66</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw">Avance</span></td><td>Video</td><td class="num">13</td><td class="num">68.542</td><td class="num pron">70</td><td class="num">65</td><td class="num vac">·</td><td class="num fuerte">66</td><td><span class="chip per">Perverso</span></td><td class="dec">Apagar</td></tr>
+<tr><td>Malva</td><td><span class="kw dual pron">Iluminacion</span></td><td>Video</td><td class="num">2</td><td class="num">3.900</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">65</td><td class="num fuerte">65</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Jaya</td><td><span class="kw pron">Vida</span></td><td>Imagen</td><td class="num">1</td><td class="num">3.099</td><td class="num pron">64</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">64</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw dual">Calma</span></td><td>Video</td><td class="num">2</td><td class="num">37.111</td><td class="num vac">·</td><td class="num vac">·</td><td class="num">63</td><td class="num fuerte">63</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw">Turnos</span></td><td>Carrusel</td><td class="num">2</td><td class="num">10.878</td><td class="num">59</td><td class="num pron">50</td><td class="num vac">·</td><td class="num fuerte">59</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual">Compra</span></td><td>Video</td><td class="num">2</td><td class="num">13.433</td><td class="num vac">·</td><td class="num vac">·</td><td class="num">57</td><td class="num fuerte">57</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw pron">Central</span></td><td>Video</td><td class="num">2</td><td class="num">6.271</td><td class="num pron">59</td><td class="num pron">42</td><td class="num vac">·</td><td class="num fuerte">57</td><td><span class="chip per">Perverso</span></td><td class="dec">Revisar destino (con reserva)</td></tr>
+<tr><td>Sibaris</td><td><span class="kw pron">Escaleras</span></td><td>Imagen</td><td class="num">1</td><td class="num">60</td><td class="num pron">56</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">56</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw dual">Mantener</span></td><td>Carrusel</td><td class="num">2</td><td class="num">13.696</td><td class="num vac">·</td><td class="num vac">·</td><td class="num">55</td><td class="num fuerte">55</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw dual pron">Pareja</span></td><td>Imagen</td><td class="num">2</td><td class="num">2.196</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">53</td><td class="num fuerte">53</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw dual pron">Retoma</span></td><td>Video</td><td class="num">2</td><td class="num">5.272</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">53</td><td class="num fuerte">53</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Foresta</td><td><span class="kw pron">Familia</span></td><td>Imagen</td><td class="num">1</td><td class="num">165</td><td class="num pron">50</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">50</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw pron">Trabajo</span></td><td>Video</td><td class="num">2</td><td class="num">11.735</td><td class="num pron">46</td><td class="num pron">72</td><td class="num vac">·</td><td class="num fuerte">50</td><td><span class="chip per">Perverso</span></td><td class="dec">Apagar (con reserva)</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual pron">Precio</span></td><td>Imagen</td><td class="num">2</td><td class="num">1.334</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">50</td><td class="num fuerte">50</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual">Rionegro</span></td><td>Video</td><td class="num">2</td><td class="num">43.952</td><td class="num vac">·</td><td class="num vac">·</td><td class="num">50</td><td class="num fuerte">50</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw pron">Domingo</span></td><td>Video</td><td class="num">2</td><td class="num">1.441</td><td class="num pron">51</td><td class="num pron">48</td><td class="num vac">·</td><td class="num fuerte">49</td><td><span class="chip per">Perverso</span></td><td class="dec">Revisar destino (con reserva)</td></tr>
+<tr><td>Malva</td><td><span class="kw dual pron">Ubicacion</span></td><td>Imagen</td><td class="num">2</td><td class="num">6.046</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">48</td><td class="num fuerte">48</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Malva</td><td><span class="kw dual pron">Lujo</span></td><td>Carrusel</td><td class="num">1</td><td class="num">1.789</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">45</td><td class="num fuerte">45</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual pron">Listos</span></td><td>Imagen</td><td class="num">1</td><td class="num">7.417</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">43</td><td class="num fuerte">43</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Salva</td><td><span class="kw dual pron">Eligen</span></td><td>Carrusel</td><td class="num">1</td><td class="num">244</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">43</td><td class="num fuerte">43</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Ruta</td><td><span class="kw dual pron">Habitacion</span></td><td>Imagen</td><td class="num">2</td><td class="num">5.706</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">41</td><td class="num fuerte">41</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+<tr><td>Jaya</td><td><span class="kw pron">460</span></td><td>Video</td><td class="num">1</td><td class="num">4.284</td><td class="num pron">38</td><td class="num vac">·</td><td class="num vac">·</td><td class="num fuerte">38</td><td><span class="chip per">Perverso</span></td><td class="dec">Apagar</td></tr>
+<tr><td>Salva</td><td><span class="kw dual pron">Propietarios</span></td><td>Carrusel</td><td class="num">1</td><td class="num">160</td><td class="num vac">·</td><td class="num vac">·</td><td class="num pron">36</td><td class="num fuerte">36</td><td><span class="chip per">Perverso</span></td><td class="dec">Dejar correr</td></tr>
+</tbody></table></div>
+<div class="leyenda"><span>Rendimiento: 100 es el histórico de la cuenta. Cada columna de objetivo se compara contra el histórico de ese objetivo, y la de rendimiento las promedia según las impresiones de la pieza en cada uno.</span><span>Instancias: veces que la misma pieza corrió en un conjunto de anuncios distinto. Sus cifras están sumadas en una sola fila.</span><span><i>En itálica</i>: la pieza, o su cifra en ese objetivo, no alcanzó 100 clics en el período, así que esa lectura es un pronóstico y no una calificación en firme.</span><span><span class="kw dual">En fucsia</span>: la pieza lleva formulario en la landing y persigue tráfico y lead a la vez, así que se califica en las dos tablas y puede quedar en una banda distinta en cada objetivo.</span></div>
+</div></section>
+<section id="inventario"><div class="wrap">
+<h2>Inventario por <span class="ac">proyecto</span></h2>
+<div class="bajada">Las mismas piezas agrupadas por proyecto y por banda, ordenadas por inversión del período. Es un inventario para ubicar rápido en qué banda cayó cada keyword; las cifras están en las tablas de arriba.</div>
+<div class="leyenda" style="margin-bottom:30px"><span><i>En itálica</i>: la pieza no alcanzó 100 clics en el período, así que su banda es un pronóstico y no una calificación en firme.</span><span><span class="kw dual">En fucsia</span>: la pieza lleva formulario en la landing y persigue tráfico y lead a la vez, así que aparece dos veces, una por objetivo.</span><span>Tráfico y Lead: el objetivo con el que se compró esa pieza.</span></div>
+<div class="proyecto"><h3>Salva</h3><div class="cajas">
+<div class="caja"><div class="caja-h exc">Excelente</div><ul><li><span class="kw dual pron">Eligen <span class="acc">· Tráfico</span></span></li></ul></div>
+<div class="caja"><div class="caja-h bue">Bueno</div><ul><li><span class="kw dual">70 <span class="acc">· Tráfico</span></span></li></ul></div>
+<div class="caja"><div class="caja-h pro">Promedio</div><ul><li><span class="kw">Vivir <span class="acc">· Tráfico</span></span></li><li><span class="kw dual">Calma <span class="acc">· Tráfico</span></span></li><li><span class="kw dual">Propietarios <span class="acc">· Tráfico</span></span></li><li><span class="kw">Comodidades <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h mal">Malo</div><ul><li><span class="kw">Decides <span class="acc">· Tráfico</span></span></li><li><span class="kw">Recta <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h per">Perverso</div><ul><li><span class="kw">Construccion <span class="acc">· Lead</span></span></li><li><span class="kw">Estamos <span class="acc">· Lead</span></span></li><li><span class="kw">Ritmo <span class="acc">· Lead</span></span></li><li><span class="kw">Construye <span class="acc">· Lead</span></span></li><li><span class="kw dual">70 <span class="acc">· Lead</span></span></li><li><span class="kw">Avance <span class="acc">· Lead</span></span></li><li><span class="kw dual">Calma <span class="acc">· Lead</span></span></li><li><span class="kw pron">Trabajo <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Eligen <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Propietarios <span class="acc">· Lead</span></span></li></ul></div>
+</div></div>
+<div class="proyecto"><h3>Malva</h3><div class="cajas">
+<div class="caja"><div class="caja-h exc">Excelente</div><ul><li><span class="kw">Casa <span class="acc">· Tráfico</span></span></li></ul></div>
+<div class="caja"><div class="caja-h bue">Bueno</div><ul><li><span class="kw dual">Iluminacion <span class="acc">· Tráfico</span></span></li><li><span class="kw dual">Retoma <span class="acc">· Tráfico</span></span></li><li><span class="kw dual">Lujo <span class="acc">· Tráfico</span></span></li><li><span class="kw">Simple <span class="acc">· Tráfico</span></span></li><li><span class="kw">Deseo <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h pro">Promedio</div><ul><li><span class="kw dual">Tranquilidad <span class="acc">· Tráfico</span></span></li><li><span class="kw">Salir <span class="acc">· Lead</span></span></li><li><span class="kw">Invertir <span class="acc">· Lead</span></span></li><li><span class="kw dual">Pareja <span class="acc">· Tráfico</span></span></li><li><span class="kw dual">Mantener <span class="acc">· Tráfico</span></span></li><li><span class="kw">Llanogrande <span class="acc">· Lead</span></span></li><li><span class="kw dual">Ubicacion <span class="acc">· Tráfico</span></span></li></ul></div>
+<div class="caja"><div class="caja-h mal">Malo</div><ul><li><span class="kw">Presupuesto <span class="acc">· Lead</span></span></li><li><span class="kw">Versus <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h per">Perverso</div><ul><li><span class="kw">Finde <span class="acc">· Lead</span></span></li><li><span class="kw dual">Tranquilidad <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Iluminacion <span class="acc">· Lead</span></span></li><li><span class="kw pron">Central <span class="acc">· Lead</span></span></li><li><span class="kw dual">Mantener <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Pareja <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Retoma <span class="acc">· Lead</span></span></li><li><span class="kw pron">Domingo <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Ubicacion <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Lujo <span class="acc">· Lead</span></span></li></ul></div>
+</div></div>
+<div class="proyecto"><h3>Ruta</h3><div class="cajas">
+<div class="caja"><div class="caja-h exc">Excelente</div><ul><li><span class="kw">Ziper <span class="acc">· Lead</span></span></li><li><span class="kw">Sector <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h bue">Bueno</div><ul><li><span class="kw">Medico <span class="acc">· Lead</span></span></li><li><span class="kw dual">Compra <span class="acc">· Tráfico</span></span></li><li><span class="kw pron">Familia <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h pro">Promedio</div><ul><li><span class="kw">Buscamos <span class="acc">· Tráfico</span></span></li><li><span class="kw dual">Listos <span class="acc">· Tráfico</span></span></li><li><span class="kw dual">Rionegro <span class="acc">· Tráfico</span></span></li><li><span class="kw">Bonito <span class="acc">· Tráfico</span></span></li><li><span class="kw dual">Habitacion <span class="acc">· Tráfico</span></span></li><li><span class="kw dual pron">Estrenar <span class="acc">· Tráfico</span></span></li></ul></div>
+<div class="caja"><div class="caja-h mal">Malo</div><ul><li><span class="kw dual pron">Estrenar <span class="acc">· Lead</span></span></li><li><span class="kw dual">Precio <span class="acc">· Tráfico</span></span></li><li><span class="kw">Disponibles <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h per">Perverso</div><ul><li><span class="kw pron">Inmediata <span class="acc">· Lead</span></span></li><li><span class="kw pron">Trabajo <span class="acc">· Lead</span></span></li><li><span class="kw pron">Pareja <span class="acc">· Lead</span></span></li><li><span class="kw">Turnos <span class="acc">· Lead</span></span></li><li><span class="kw dual">Compra <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Precio <span class="acc">· Lead</span></span></li><li><span class="kw dual">Rionegro <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Listos <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Habitacion <span class="acc">· Lead</span></span></li></ul></div>
+</div></div>
+<div class="proyecto"><h3>Jaya</h3><div class="cajas">
+<div class="caja"><div class="caja-h exc">Excelente</div><ul><li><span class="kw dual pron">Nadie <span class="acc">· Lead</span></span></li><li><span class="kw dual">Quieres <span class="acc">· Lead</span></span></li><li><span class="kw dual pron">Primer <span class="acc">· Lead</span></span></li><li><span class="kw">Aptos <span class="acc">· Lead</span></span></li><li><span class="kw">Construccion <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h bue">Bueno</div><ul><li><span class="kw">Falso <span class="acc">· Lead</span></span></li><li><span class="kw dual">Quieres <span class="acc">· Tráfico</span></span></li></ul></div>
+<div class="caja"><div class="caja-h pro">Promedio</div><ul><li><span class="kw dual">Nadie <span class="acc">· Tráfico</span></span></li><li><span class="kw dual">Primer <span class="acc">· Tráfico</span></span></li></ul></div>
+<div class="caja"><div class="caja-h mal">Malo</div><ul><li><span class="kw">Momento <span class="acc">· Tráfico</span></span></li></ul></div>
+<div class="caja"><div class="caja-h per">Perverso</div><ul><li><span class="kw">Visita <span class="acc">· Lead</span></span></li><li><span class="kw pron">Remoto <span class="acc">· Lead</span></span></li><li><span class="kw pron">Vida <span class="acc">· Lead</span></span></li><li><span class="kw pron">460 <span class="acc">· Lead</span></span></li></ul></div>
+</div></div>
+<div class="proyecto"><h3>Sibaris</h3><div class="cajas">
+<div class="caja"><div class="caja-h exc">Excelente</div><ul><li><span class="kw">Nivel <span class="acc">· Lead</span></span></li><li><span class="kw">Campestre <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h bue">Bueno</div><ul><li class="vacia">—</li></ul></div>
+<div class="caja"><div class="caja-h pro">Promedio</div><ul><li class="vacia">—</li></ul></div>
+<div class="caja"><div class="caja-h mal">Malo</div><ul><li><span class="kw">Niños <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h per">Perverso</div><ul><li><span class="kw pron">Escaleras <span class="acc">· Lead</span></span></li></ul></div>
+</div></div>
+<div class="proyecto"><h3>Foresta</h3><div class="cajas">
+<div class="caja"><div class="caja-h exc">Excelente</div><ul><li><span class="kw pron">Atributos <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h bue">Bueno</div><ul><li><span class="kw pron">Privada <span class="acc">· Lead</span></span></li><li><span class="kw">Disfrutar <span class="acc">· Lead</span></span></li></ul></div>
+<div class="caja"><div class="caja-h pro">Promedio</div><ul><li class="vacia">—</li></ul></div>
+<div class="caja"><div class="caja-h mal">Malo</div><ul><li class="vacia">—</li></ul></div>
+<div class="caja"><div class="caja-h per">Perverso</div><ul><li><span class="kw pron">Familia <span class="acc">· Lead</span></span></li></ul></div>
+</div></div>
+</div></section>
+<section id="ranking"><div class="wrap rank">
+<h2>Ranking por <span class="ac">proyecto</span></h2>
+<div class="bajada">Cada proyecto medido como un solo conjunto: se suman los anuncios que corrieron con ese objetivo y se recalculan las tasas sobre esos totales, no se promedian las calificaciones de sus piezas. Dentro del conjunto, cada objetivo se compara contra su propio histórico y se combinan según las impresiones del proyecto en cada uno. Ordenado de mayor a menor rendimiento.</div>
+<h3>Tráfico</h3><div class="tabla-wrap"><table><thead><tr><th>Proyecto</th><th class="num">Piezas</th><th class="num">Impresiones</th><th class="num">Inversión del período</th><th>Mezcla de objetivos</th><th class="num">Rendimiento</th><th class="num">Contraste</th><th>Banda</th></tr></thead><tbody>
+<tr><td class="g">Malva</td><td class="num">9</td><td class="num">611.912</td><td class="num">$3.700.262</td><td class="mez">Visita a la página 56% · Visita con permanencia 35% · Formulario en la landing 9%</td><td class="num fuerte">107</td><td class="num">+3.3</td><td><span class="chip bue">Bueno</span></td></tr>
+<tr><td class="g">Salva</td><td class="num">6</td><td class="num">595.079</td><td class="num">$3.697.918</td><td class="mez">Visita a la página 53% · Visita con permanencia 38% · Formulario en la landing 9%</td><td class="num fuerte">105</td><td class="num">+2.0</td><td><span class="chip pro">Promedio</span></td></tr>
+<tr><td class="g">Jaya</td><td class="num">4</td><td class="num">612.467</td><td class="num">$3.625.968</td><td class="mez">Visita con permanencia 56% · Visita a la página 38% · Formulario en la landing 6%</td><td class="num fuerte">104</td><td class="num">+1.3</td><td><span class="chip pro">Promedio</span></td></tr>
+<tr><td class="g">Ruta</td><td class="num">8</td><td class="num">606.960</td><td class="num">$3.559.451</td><td class="mez">Visita a la página 54% · Visita con permanencia 33% · Formulario en la landing 12%</td><td class="num fuerte">102</td><td class="num">+0.2</td><td><span class="chip pro">Promedio</span></td></tr>
+</tbody></table></div>
+<h3>Lead</h3><div class="tabla-wrap"><table><thead><tr><th>Proyecto</th><th class="num">Piezas</th><th class="num">Impresiones</th><th class="num">Inversión del período</th><th>Mezcla de objetivos</th><th class="num">Rendimiento</th><th class="num">Contraste</th><th>Banda</th></tr></thead><tbody>
+<tr><td class="g">Jaya</td><td class="num">10</td><td class="num">365.246</td><td class="num">$6.487.740</td><td class="mez">Conversación por WhatsApp 91% · Formulario en la landing 9%</td><td class="num fuerte">120</td><td class="num">+0.7</td><td><span class="chip exc">Excelente</span></td></tr>
+<tr><td class="g">Sibaris</td><td class="num">4</td><td class="num">36.111</td><td class="num">$751.698</td><td class="mez">Conversación por WhatsApp 100%</td><td class="num fuerte">118</td><td class="num">+1.0</td><td><span class="chip exc">Excelente</span></td></tr>
+<tr><td class="g">Foresta</td><td class="num">4</td><td class="num">17.919</td><td class="num">$365.472</td><td class="mez">Conversación por WhatsApp 100%</td><td class="num fuerte">109</td><td class="num">+0.3</td><td><span class="chip bue">Bueno</span></td></tr>
+<tr><td class="g">Ruta</td><td class="num">15</td><td class="num">522.493</td><td class="num">$9.153.465</td><td class="mez">Formulario en Meta 47% · Conversación por WhatsApp 39% · Formulario en la landing 14%</td><td class="num fuerte">103</td><td class="num">+1.0</td><td><span class="chip pro">Promedio</span></td></tr>
+<tr><td class="g">Malva</td><td class="num">16</td><td class="num">327.808</td><td class="num">$9.609.960</td><td class="mez">Conversación por WhatsApp 43% · Formulario en Meta 41% · Formulario en la landing 16%</td><td class="num fuerte">86</td><td class="num">-1.4</td><td><span class="chip mal">Malo</span></td></tr>
+<tr><td class="g">Salva</td><td class="num">12</td><td class="num">358.366</td><td class="num">$9.708.041</td><td class="mez">Formulario en Meta 46% · Conversación por WhatsApp 39% · Formulario en la landing 15%</td><td class="num fuerte">76</td><td class="num">-3.5</td><td><span class="chip per">Perverso</span></td></tr>
+</tbody></table></div>
+<div class="leyenda"><span>Mezcla de objetivos: cómo reparte el proyecto sus impresiones entre los objetivos de la tabla. Va declarada porque un proyecto cargado en el objetivo más difícil arrastra su rendimiento hacia abajo por composición y no por calidad de las piezas.</span><span>Contraste: qué tan sólida es la diferencia contra el histórico. Sobre 2 en valor absoluto la banda se afirma; entre 1 y 2 es una inclinación; por debajo de 1 el proyecto no se distingue de su histórico.</span></div>
+</div></section>
+<section id="decisiones"><div class="wrap">
+<h2>Qué <span class="ac">hacemos</span> con esto</h2>
+<div class="bajada">Cada decisión sale de la banda de la pieza y de qué tan sólida es la evidencia que la sostiene. Donde la evidencia no alcanza, la instrucción es dejar correr.</div>
+<div class="dec-grid"><div class="dec-item"><h3>Apagar</h3><p>Cuatro piezas de Salva y Jaya con 2,8 millones invertidos: Avance, Construye y Trabajo de Salva, y 460 de Jaya. Avance es la de evidencia más firme del informe entero.</p></div><div class="dec-item"><h3>Escalar</h3><p>Jaya · Aptos, Malva · Casa, Salva · Eligen y Foresta · Atributos. Son las cuatro que la evidencia respalda para recibir más presupuesto, con 1,5 millones invertidos entre todas: hoy están subalimentadas.</p></div><div class="dec-item"><h3>Ampliar audiencia antes de escalar</h3><p>Jaya · Quieres, Ruta · Ziper, Sibaris · Nivel y Malva · Lujo rinden por encima del histórico pero ya repiten demasiado sobre la misma gente. Subirles presupuesto sin abrir audiencia las quema.</p></div><div class="dec-item"><h3>Revisar el destino, no la pieza</h3><p>Salva · Construcción, Jaya · Remoto, Malva · Central y Malva · Domingo atraen bien y se caen después del clic. El problema no está en el anuncio: está en lo que pasa cuando la persona llega.</p></div><div class="dec-item"><h3>Refrescar el gancho conservando el mensaje</h3><p>Jaya · Primer convierte bien a quien entra y le cuesta llamar la atención. Se cambia la entrada, no el argumento.</p></div><div class="dec-item"><h3>Salva es la decisión de fondo</h3><p>En captación Salva queda en 75 con la evidencia más sólida del informe, y se lleva 9,7 millones, la mayor inversión de cualquier proyecto en lead. No es una pieza suelta: es el proyecto completo el que no está convirtiendo.</p></div><div class="dec-item"><h3>Definir qué es el formulario en la landing</h3><p>Hoy se paga como captura de contactos y entrega tráfico. La decisión es si sigue siendo un evento de lead o se acepta como lo que está siendo.</p></div><div class="dec-item"><h3>Lo que no se toca</h3><p>62 de las 88 calificaciones dicen dejar correr. No es un vacío: son piezas que no se distinguen del histórico y no hay razón para moverlas.</p></div></div>
+</div></section>
+<footer><div class="wrap">delaossa.co para Plan Inmobiliario · Datos de Meta Ads del 1 de enero al 10 de septiembre de 2026 · Comparación contra el histórico de la cuenta de marzo de 2025 a agosto de 2026 · <b>Septiembre de 2026</b></div></footer>
+<script>
+const secs=[...document.querySelectorAll('section[id]')],links=[...document.querySelectorAll('nav a')];
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+ links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));}});},
+ {rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>io.observe(s));
+</script></body></html>
